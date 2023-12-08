@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.ant-select-selector,
+.ant-picker {
+    width: 250px !important;
+}
