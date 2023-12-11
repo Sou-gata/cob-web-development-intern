@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Stopwatch App</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 p-4 d-flex flex-column align-items-center">
+                    <h2 class="text-center">Stopwatch</h2>
+
+                    <div class="d-flex align-items-end timer">
+                        <div>
+                            <p>Hours</p>
+                            <p class="hour">00</p>
+                        </div>
+                        <p class="display-1 dots">:</p>
+                        <div>
+                            <p>Minutes</p>
+                            <p class="min">00</p>
+                        </div>
+                        <p class="display-1 dots">:</p>
+                        <div>
+                            <p>Seconds</p>
+                            <p class="sec">00</p>
+                        </div>
+                        <p class="display-1 dots">:</p>
+                        <div>
+                            <p>Miliseconds</p>
+                            <p class="ms">00</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-4 align-items-center">
+                        <button class="btn btn-primary start">Start</button>
+                        <button class="btn btn-info pause d-none">Pause</button>
+                        <button class="btn btn-success lap">Laps</button>
+                        <button class="btn btn-danger reset">Reset</button>
+                    </div>
+                    <p class="display-6 mb-4 mt-4">Laps</p>
+                    <div class="laps"></div>
+                </div>
+            </div>
+        </div>
+        <script src="./script.js"></script>
+    </body>
+</html>
