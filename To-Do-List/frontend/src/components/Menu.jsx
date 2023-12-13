@@ -11,12 +11,12 @@ const Menu = () => {
     const [selected, setSelected] = React.useState("");
     React.useEffect(() => {
         if (pathname === "/completed") {
-            setSelected("completed");
-        } else if (pathname === "incomplete") {
-            setSelected("/incomplete");
-        } else if (pathname == "") {
-            setSelected("/upcoming");
-        } else if (pathname == "today") {
+            setSelected("complete");
+        } else if (pathname === "/incomplete") {
+            setSelected("incomplete");
+        } else if (pathname == "/upcoming") {
+            setSelected("upcoming");
+        } else if (pathname == "/today") {
             setSelected("today");
         } else if (pathname == "/past") {
             setSelected("old");
@@ -25,7 +25,9 @@ const Menu = () => {
         } else if (pathname == "/personal") {
             setSelected("personal");
         } else if (pathname == "/others") {
-            setSelected("other");
+            setSelected("others");
+        } else {
+            setSelected("");
         }
     }, [pathname]);
     const { setModals } = React.useContext(Context);
@@ -134,8 +136,8 @@ const Menu = () => {
                             selected == "personal" && "bg-blue-200"
                         } transition-all duration-300 hover:bg-blue-100`}
                         onClick={() => {
-                            navigate("/personal");
                             setSelected("personal");
+                            navigate("/personal");
                         }}
                     >
                         <div className="bg-orange-600 w-4 h-4 rounded-md" />
@@ -160,8 +162,8 @@ const Menu = () => {
                             selected == "others" && "bg-blue-200"
                         } transition-all duration-300 hover:bg-blue-100`}
                         onClick={() => {
-                            navigate("/others");
                             setSelected("others");
+                            navigate("/others");
                         }}
                     >
                         <div className="bg-yellow-400 w-4 h-4 rounded-md" />

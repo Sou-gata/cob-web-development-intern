@@ -5,7 +5,8 @@ import { AiFillEdit } from "react-icons/ai";
 import { FaTrash } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { Context } from "../Context";
-import { makeAsIncomplete } from "../utils";
+import { makeAsComplete, makeAsIncomplete } from "../utils";
+import { IoCheckmark } from "react-icons/io5";
 
 const PersonalTodos = () => {
     const { todos, setTodos, setId, setModals } = useContext(Context);
@@ -25,6 +26,23 @@ const PersonalTodos = () => {
                     return {
                         ...todo,
                         isCompleted: false,
+                    };
+                }
+                return todo;
+            });
+            setTodos(newTodos);
+        } else {
+            toast("error", res.message || "Something went wrong");
+        }
+    };
+    const makeCompleted = async (id) => {
+        let res = await makeAsComplete(id);
+        if (res.success) {
+            let newTodos = todos.map((todo) => {
+                if (todo.key === id) {
+                    return {
+                        ...todo,
+                        isCompleted: true,
                     };
                 }
                 return todo;
@@ -78,12 +96,21 @@ const PersonalTodos = () => {
             render: (_, record) => {
                 return (
                     <div className="flex items-center gap-5">
-                        <RxCross1
-                            size={16}
-                            color="#dc3545"
-                            className="cursor-pointer"
-                            onClick={() => makeIncompleted(record.key)}
-                        />
+                        {record.isCompleted ? (
+                            <RxCross1
+                                size={16}
+                                color="#dc3545"
+                                className="cursor-pointer"
+                                onClick={() => makeIncompleted(record.key)}
+                            />
+                        ) : (
+                            <IoCheckmark
+                                size={20}
+                                color="#28a745"
+                                className="cursor-pointer"
+                                onClick={() => makeCompleted(record.key)}
+                            />
+                        )}
                         <AiFillEdit
                             size={20}
                             color="#ffc107"
