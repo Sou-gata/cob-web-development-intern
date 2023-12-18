@@ -42,7 +42,7 @@ const Edit = () => {
             }
             const res = await axios.patch(`${baseUrl}/api/todo/${id}`, {
                 ...todo,
-                date: todo.date.$d,
+                date: todo.date,
             });
             if (res.data.success) {
                 let newTodo = res.data.todo;
@@ -53,7 +53,7 @@ const Edit = () => {
                             title: newTodo.title,
                             description: newTodo.description,
                             list: newTodo.list,
-                            date: newTodo.date.$d,
+                            date: newTodo.date,
                             isCompleted: newTodo.isCompleted,
                         };
                     }
@@ -121,7 +121,7 @@ const Edit = () => {
                     <DatePicker
                         value={todo.date}
                         onChange={(e) => {
-                            setTodo({ ...todo, date: e });
+                            setTodo({ ...todo, date: e.$d });
                         }}
                     />
                 </div>
