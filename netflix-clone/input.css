@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+    font-family: sans-serif;
+}
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label,
+textarea:focus ~ label,
+textarea:not(:placeholder-shown) ~ label,
+select:focus ~ label,
+select:not([value=""]):valid ~ label {
+    @apply transform;
+    @apply scale-75;
+    @apply -translate-y-7;
+}
+input:focus ~ label,
+select:focus ~ label {
+    @apply text-white;
+    @apply left-1.5;
+}
+.input-email {
+    @apply border border-gray-500 py-1 rounded-md h-[56px] relative w-[368px];
+}
+.footer-list-item {
+    @apply w-1/2 md:w-1/4 mb-4 text-[15px] cursor-pointer text-gray-300 underline;
+}
+.bg-img {
+    background: url(./assets/0.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.bg {
+    background: linear-gradient(to top, #000000cc 0, #00000000 60%, #000000cc 100%) !important;
+}
+.accordion {
+    @apply text-left text-white;
+}
+.segment:not(:first-child) {
+    @apply mt-2 md:mt-4;
+}
+.segment-btn {
+    @apply p-6 bg-[#2d2d2d] w-full text-left text-[18px] md:text-[24px] hover:bg-[#3f3f3f] transition-all;
+}
+.article__content {
+    @apply p-6 text-[18px] md:text-[24px] overflow-hidden bg-[#2d2d2d];
+    height: 0px;
+    padding: 0px;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: all 0.3s ease-in-out;
+}
+.segment.open .article__content {
+    height: auto;
+    padding: 24px;
+    transform: scaleY(1);
+    border-top: 1px solid #000;
+}
+.segment.open .plus {
+    transform: rotate(45deg);
+}
